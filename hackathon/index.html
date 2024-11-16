@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Outfit Recommendations</title>
+</head>
+<body>
+    <h1>Body Type and Outfit Recommendation</h1>
+    <p>Use the form below to filter your clothing preferences:</p>
+    <form action="/preferences" method="POST">
+        <label for="color">Favorite Color:</label>
+        <input type="text" id="color" name="color"><br><br>
+        <label for="style">Preferred Style (e.g., casual, formal):</label>
+        <input type="text" id="style" name="style"><br><br>
+        <label for="occasion">Occasion (e.g., casual, work, evening):</label>
+        <input type="text" id="occasion" name="occasion"><br><br>
+        <label for="body_type">Body Type (e.g., mesomorph, ectomorph):</label>
+        <input type="text" id="body_type" name="body_type"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if outfits %}
+    <h2>Your Personalized Outfit Recommendations:</h2>
+    <ul>
+        {% for outfit in outfits %}
+            <li>{{ outfit }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h2>Webcam Feed:</h2>
+    <!-- Show the webcam stream -->
+    <img src="{{ url_for('video') }}" width="640" height="480" />
+</body>
+</html>
